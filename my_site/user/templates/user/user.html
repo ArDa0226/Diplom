@@ -1,0 +1,15 @@
+{% extends 'user/base.html' %}
+
+{% block content %}
+<h1>{{ user.name }}</h1>
+
+{% if user.photo %}
+<p><img class="img-article-left" src="{{user.photo.url}}"></p>
+{% endif %}
+
+<h2>{{ user.surname|linebreaks }}</h2>
+<h3>{{ user.name|linebreaks }}</h3>
+<h3>{{ user.patronymic|linebreaks }}</h3>
+
+{{ user.autobiography|linebreaks }}
+{% endblock %}

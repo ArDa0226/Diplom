@@ -1,0 +1,22 @@
+{% extends 'user/base.html' %}
+
+{% block content %}
+<ul class="list-articles">
+	{% for p in users %}
+		<li><div class="article-panel">
+			<p class="first">Отдел: {{ p.group }}</p>
+			<p class="last">Дата: {{ p.time_update|date:"d-m-Y H:i:s" }}</p>
+		</div></li>
+	{% if p.photo %}
+	<p><img class="img-article-left thumb" src="{{ p.photo.url }}"></p>
+	{% endif %}
+			<li><h2>{{p.title}}</h2>
+	{% autoescape on %}
+	{{p.name|linebreaks|truncatewords:50}}
+	{% endautoescape %}
+			<div class="clear"></div>
+			<p class="link-read-post"><a href="{{ p.get_absolute_url }}">Информация о сотруднике</a></p>
+			</li>
+	{% endfor %}
+</ul>
+{% endblock %}
